@@ -1,0 +1,80 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 30d
+      cookie:
+        same-site: lax
+        http-only: true
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/cs2arena
+    username: postgres
+    password: postgres
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+
+# ============================================================
+#  CS2 ARENA sozlamalari
+# ============================================================
+app:
+  name: "CS2 ARENA"
+  base-url: "http://localhost:8080"
+
+  # https://steamcommunity.com/dev/apikey — nik va avatar uchun
+  steam-api-key: "4AB32B7D073DE35EECA259CD78D47299"
+
+  # Shu Steam ID'lar kirganda avtomatik SUPER_ADMIN bo'ladi (17 xonali raqam)
+  super-admin-steam-ids: []
+
+  banner:
+    badge: "YANGI MAVSUM · S1"
+    title: "5v5 o'yinlar — adolatli match va reyting"
+    subtitle: "Toshkent serverlari, ELO reyting tizimi va do'stlar bilan custom matchlar"
+    prize-label: "Mavsum mukofoti"
+    prize-value: "10 mln so'm"
+    prize-note: "Qoldi: 30 kun"
+
+  # Veto uchun xaritalar puli
+  map-pool: [de_mirage, de_inferno, de_dust2, de_nuke, de_ancient, de_anubis, de_train]
+
+  # MatchZy plugin bilan aloqa uchun maxfiy kalit (o'zgartiring!)
+  matchzy:
+    secret: "change-me-matchzy-secret"
+
+  premium:
+    yearly-discount-percent: 20
+    plans:
+      - code: PREMIUM
+        name: "Premium"
+        monthly-price: 59000
+      - code: PREMIUM_PLUS
+        name: "Premium+"
+        monthly-price: 119000
+
+  payme:
+    enabled: true
+    test-mode: true
+    merchant-id: ""
+    # Kassa kaliti (test rejimida — test kalit)
+    key: ""
+    account-field: "payment_id"
+
+  click:
+    enabled: true
+    service-id: ""
+    merchant-id: ""
+    secret-key: ""
+
+  topup:
+    min-amount: 1000
+    max-amount: 10000000
